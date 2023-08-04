@@ -1,5 +1,5 @@
 # KreativStorm-project
-Building a Rock | Paper  Scissors Game
+Rock | Paper  Scissors Game
 
 Our game is un-breakable
 
