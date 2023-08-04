@@ -1,4 +1,4 @@
-# KreativStorm-project
+# Kreativstorm-project
 Rock | Paper  Scissors Game
 
 Our game is un-breakable
