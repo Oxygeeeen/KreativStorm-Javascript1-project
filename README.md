@@ -1,4 +1,8 @@
 # KreativStorm-project
-Building a Rock | Paper | Scissors Game
+Building a Rock | Paper  Scissors Game
 
-Visit website at: https://oxygeeeen.github.io/KreativStorm-Javascript1-project/
+Our game is un-breakable
+
+Feeling challenged!
+
+Visit our RPS Game at: https://oxygeeeen.github.io/KreativStorm-Javascript1-project/
