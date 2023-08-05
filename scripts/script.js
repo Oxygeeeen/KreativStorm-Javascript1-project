@@ -60,17 +60,26 @@ function game(title) {
   }
 
   if (playerScore > computerScore) {
-    console.log("Congratulations! You won!  You defeated the evil AI!")
+    console.log("Congratulations! You won!  You defeated the evil AI!");
     alert("Congratulations! You won!  You defeated the evil AI!");
   } else if (playerScore < computerScore) {
-    console.log("The AI dominated you! Don't give up! You can always try again!")
+    console.log(
+      "The AI dominated you! Don't give up! You can always try again!"
+    );
     alert("The AI dominated you! Don't give up! You can always try again!");
   } else {
-    console.log("It's a tie! The AI is still lurking around! Don't give up! Try again!")
+    console.log(
+      "It's a tie! The AI is still lurking around! Don't give up! Try again!"
+    );
     alert(
       "It's a tie! The AI is still lurking around! Don't give up! Try again!"
     );
   }
 }
 
-game("Defeat the AI \n");
+alert(
+  "AI wants to dominate the world through the game of ROCK, PAPER or SCISSORS! \nDefeat the AI and save mankind \nTo get the best experience, open your console \nRight click on your browser and click inpect to do so \nGoodluck Human !\nGame starts in 5 seconds"
+);
+setTimeout(() => {
+  game("Defeat the AI \n");
+}, 5000);
