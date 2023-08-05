@@ -1,5 +1,5 @@
 # Kreativstorm-project
-Rock | Paper  Scissors Game
+Rock | Paper | Scissors Game
 
 AI wants to dominate the world through the game of ROCK, PAPER or SCISSORS!
 
