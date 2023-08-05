@@ -27,7 +27,7 @@ function getUserChoice() {
       alert("You canceled the game. Goodbye!");
       return null;
     }
-    playerSelection = playerSelection.trim().toLowerCase();;
+    playerSelection = playerSelection.trim().toLowerCase();
 
     if (options.includes(playerSelection)) {
       break;
