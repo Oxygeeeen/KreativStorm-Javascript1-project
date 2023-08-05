@@ -1,4 +1,5 @@
 const options = ["rock", "paper", "scissors"];
+
 function computerPlay() {
   const computerOption = Math.floor(Math.random() * options.length);
   return options[computerOption];
@@ -19,75 +20,76 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function getUserChoice() {
+  let playerSelection;
   while (true) {
-    const title = "Defeat the AI \n"
-    let message = title || "";
-    let playerSelection;
-    playerSelection = prompt(
-      `${message}Round ${i + 1} : Rock, Paper or Scissors?`
-    );
+    playerSelection = prompt("Enter your choice (Rock/Paper/Scissors)").toLowerCase();
     if (playerSelection === null) {
-      alert(
-        "You canceled the game. AI remains undefeated. Refresh to try again !"
-      );
-      return;
+      alert("You canceled the game. Goodbye!");
+      return null;
     }
-    playerSelection = playerSelection.trim().toLowerCase();
+    playerSelection = playerSelection.trim();
 
     if (options.includes(playerSelection)) {
-      message = "";
       break;
     } else {
-      message = "Invalid input! \n";
+      alert("Invalid input! Please enter Rock, Paper, or Scissors.");
     }
+  }
+  return playerSelection;
+}
+
+function displayGameIntro() {
+  alert("AI wants to dominate the world through the game of ROCK, PAPER, or SCISSORS! \nDefeat the AI and save mankind. \nTo get the best experience, open your console. \nRight-click on your browser and click inspect to do so. \nGood luck, Human! \nGame starts in 5 seconds");
+}
+
+function displayRoundResult(roundResult, roundNumber) {
+  if (roundResult === "won") {
+    console.log(`You won round ${roundNumber}`);
+  } else if (roundResult === "lost") {
+    console.log(`You lost round ${roundNumber}`);
+  } else {
+    console.log(`Round ${roundNumber} was a tie`);
+  }
+}
+
+function displayFinalResult(playerScore, computerScore) {
+  if (playerScore > computerScore) {
+    alert("Congratulations! You defeated the evil AI!");
+  } else if (playerScore < computerScore) {
+    alert("The AI dominated you! Better luck next time!");
+  } else {
+    alert("It's a tie! The AI is still lurking around!");
   }
 }
 
 function game() {
   let playerScore = 0;
   let computerScore = 0;
-//   let message = title || "";
 
-  for (let i = 0; i < 5; i++) {
-    const computerSelection = computerPlay();
-    const playerSelection = getUserChoice()
-    const roundResult = playRound(playerSelection, computerSelection);
-    if (roundResult === "won") {
-      console.log(`You won round ${i + 1}`);
-      playerScore++;
-    } else if (roundResult === "lost") {
-      console.log(`You lost round ${i + 1}`);
-      computerScore++;
-    } else {
-      console.log(`Round ${i + 1} was a tie`);
+  displayGameIntro();
+
+  setTimeout(() => {
+    for (let i = 0; i < 5; i++) {
+      const computerSelection = computerPlay();
+      const playerSelection = getUserChoice();
+      if (playerSelection === null) {
+        return;
+      }
+
+      const roundResult = playRound(playerSelection, computerSelection);
+      displayRoundResult(roundResult, i + 1);
+
+      if (roundResult === "won") {
+        playerScore++;
+      } else if (roundResult === "lost") {
+        computerScore++;
+      }
     }
-  }
 
-  evalScore();
+    setTimeout(() => {
+      displayFinalResult(playerScore, computerScore);
+    }, 1000);
+  }, 5000);
 }
 
-function evalScore() {
-  if (playerScore > computerScore) {
-    console.log("Congratulations! You won!  You defeated the evil AI!");
-    alert("Congratulations! You won!  You defeated the evil AI!");
-  } else if (playerScore < computerScore) {
-    console.log(
-      "The AI dominated you! Don't give up! You can always try again!"
-    );
-    alert("The AI dominated you! Don't give up! You can always try again!");
-  } else {
-    console.log(
-      "It's a tie! The AI is still lurking around! Don't give up! Try again!"
-    );
-    alert(
-      "It's a tie! The AI is still lurking around! Don't give up! Try again!"
-    );
-  }
-}
-
-alert(
-  "AI wants to dominate the world through the game of ROCK, PAPER or SCISSORS! \nDefeat the AI and save mankind \nTo get the best experience, open your console \nRight click on your browser and click inpect to do so \nGoodluck Human !\nGame starts in 5 seconds"
-);
-setTimeout(() => {
-  game();
-}, 5000);
+game();
