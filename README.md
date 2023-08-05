@@ -1,8 +1,8 @@
 # Kreativstorm-project
 Rock | Paper  Scissors Game
 
-Our game is un-breakable
+AI wants to dominate the world through the game of ROCK, PAPER or SCISSORS!
 
-Feeling challenged!
+Defeat the AI and save mankind! Here's a portal to your un-breakable battlefield: https://oxygeeeen.github.io/KreativStorm-Javascript1-project/
 
-Visit our RPS Game at: https://oxygeeeen.github.io/KreativStorm-Javascript1-project/
+Goodluck ! Humanity thanks you !!! 

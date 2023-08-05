@@ -1,68 +1,76 @@
+const choices = ["rock", "paper", "scissors"];
 function computerPlay() {
-    const choices = ['Rock', 'Paper', 'Scissors'];
-    const randomIndex = Math.floor(Math.random() * choices.length);
-    return choices[randomIndex];
+  const randomIndex = Math.floor(Math.random() * choices.length);
+  return choices[randomIndex];
 }
 
 function playRound(playerSelection, computerSelection) {
-    const playerChoice = playerSelection.toLowerCase();
-    const computerChoice = computerSelection.toLowerCase();
-
-    if (playerChoice === computerChoice) {
-        return "It's a tie! Both players chose " + playerChoice;
-    } else if (
-        (playerChoice === 'rock' && computerChoice === 'scissors') ||
-        (playerChoice === 'paper' && computerChoice === 'rock') ||
-        (playerChoice === 'scissors' && computerChoice === 'paper')
-    ) {
-        return `You Win! ${playerChoice} beats ${computerChoice}`;
-    } else {
-        return `You Lose! ${computerChoice} beats ${playerChoice}`;
-    }
+  if (playerSelection === computerSelection) {
+    return "tie";
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    return "won";
+  } else {
+    return "lost";
+  }
 }
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
+function game(title) {
+  let playerScore = 0;
+  let computerScore = 0;
+  let message = title || "";
 
-    for (let i = 0; i < 5; i++) {
-        let playerSelection;
+  for (let i = 0; i < 5; i++) {
+    let playerSelection;
 
-        while (true) {
-            playerSelection = prompt("Round " + (i + 1) + ": Enter your choice (Rock/Paper/Scissors)")
+    while (true) {
+      playerSelection = prompt(
+        `${message}Round ${i + 1} : Rock, Paper or Scissors?`
+      );
+      if (playerSelection === null) {
+        alert(
+          "You canceled the game. AI remains undefeated. Refresh to try again !"
+        );
+        return;
+      }
+      playerSelection = playerSelection.trim().toLowerCase();
 
-            if (playerSelection === null) {
-                alert("You canceled the game. Goodbye!");
-                return; // Exit the game if the user cancels the prompt
-            }
-
-            playerSelection = playerSelection.trim().toLowerCase();
-
-            if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
-                break;
-            } else {
-                alert("Invalid choice! Please enter Rock, Paper, or Scissors.");
-            }
-        } // Make sure the user doesn't get a pass until the intended is provided as input
-
-        const computerSelection = computerPlay();
-        const result = playRound(playerSelection, computerSelection);
-        console.log(result);
-
-        if (result.includes('Win')) {
-            playerScore++;
-        } else if (result.includes('Lose')) {
-            computerScore++;
-        }
+      if (choices.includes(playerSelection)) {
+        message = "";
+        break;
+      } else {
+        message = "Invalid input! \n";
+      }
     }
 
-    if (playerScore > computerScore) {
-        alert("Congratulations! You defeated the evil AI!");
-    } else if (playerScore < computerScore) {
-        alert("The AI dominated you! Better luck next time!");
+    const computerSelection = computerPlay();
+    const roundResult = playRound(playerSelection, computerSelection);
+    if (roundResult === "won") {
+      console.log(`You won round ${i + 1}`);
+      playerScore++;
+    } else if (roundResult === "lost") {
+      console.log(`You lost round ${i + 1}`);
+      computerScore++;
     } else {
-        alert("It's a tie! The AI is still lurking around!");
+      console.log(`Round ${i + 1} was a tie`);
     }
+  }
+
+  if (playerScore > computerScore) {
+    console.log("Congratulations! You won!  You defeated the evil AI!")
+    alert("Congratulations! You won!  You defeated the evil AI!");
+  } else if (playerScore < computerScore) {
+    console.log("The AI dominated you! Don't give up! You can always try again!")
+    alert("The AI dominated you! Don't give up! You can always try again!");
+  } else {
+    console.log("It's a tie! The AI is still lurking around! Don't give up! Try again!")
+    alert(
+      "It's a tie! The AI is still lurking around! Don't give up! Try again!"
+    );
+  }
 }
 
-game();
+game("Defeat the AI \n");
