@@ -19,26 +19,28 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function getUserChoice() {
-    while (true) {
-        let playerSelection;
-        playerSelection = prompt(
-          `${message}Round ${i + 1} : Rock, Paper or Scissors?`
-        );
-        if (playerSelection === null) {
-          alert(
-            "You canceled the game. AI remains undefeated. Refresh to try again !"
-          );
-          return;
-        }
-        playerSelection = playerSelection.trim().toLowerCase();
-  
-        if (options.includes(playerSelection)) {
-          message = "";
-          break;
-        } else {
-          message = "Invalid input! \n";
-        }
-      }
+  while (true) {
+    const title = "Defeat the AI \n"
+    let message = title || "";
+    let playerSelection;
+    playerSelection = prompt(
+      `${message}Round ${i + 1} : Rock, Paper or Scissors?`
+    );
+    if (playerSelection === null) {
+      alert(
+        "You canceled the game. AI remains undefeated. Refresh to try again !"
+      );
+      return;
+    }
+    playerSelection = playerSelection.trim().toLowerCase();
+
+    if (options.includes(playerSelection)) {
+      message = "";
+      break;
+    } else {
+      message = "Invalid input! \n";
+    }
+  }
 }
 
 function game(title) {
