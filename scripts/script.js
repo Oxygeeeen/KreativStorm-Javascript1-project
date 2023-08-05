@@ -18,35 +18,37 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+function getUserChoice() {
+    while (true) {
+        let playerSelection;
+        playerSelection = prompt(
+          `${message}Round ${i + 1} : Rock, Paper or Scissors?`
+        );
+        if (playerSelection === null) {
+          alert(
+            "You canceled the game. AI remains undefeated. Refresh to try again !"
+          );
+          return;
+        }
+        playerSelection = playerSelection.trim().toLowerCase();
+  
+        if (options.includes(playerSelection)) {
+          message = "";
+          break;
+        } else {
+          message = "Invalid input! \n";
+        }
+      }
+}
+
 function game(title) {
   let playerScore = 0;
   let computerScore = 0;
   let message = title || "";
 
   for (let i = 0; i < 5; i++) {
-    let playerSelection;
-
-    while (true) {
-      playerSelection = prompt(
-        `${message}Round ${i + 1} : Rock, Paper or Scissors?`
-      );
-      if (playerSelection === null) {
-        alert(
-          "You canceled the game. AI remains undefeated. Refresh to try again !"
-        );
-        return;
-      }
-      playerSelection = playerSelection.trim().toLowerCase();
-
-      if (options.includes(playerSelection)) {
-        message = "";
-        break;
-      } else {
-        message = "Invalid input! \n";
-      }
-    }
-
     const computerSelection = computerPlay();
+    const playerSelection = getUserChoice()
     const roundResult = playRound(playerSelection, computerSelection);
     if (roundResult === "won") {
       console.log(`You won round ${i + 1}`);
@@ -59,6 +61,10 @@ function game(title) {
     }
   }
 
+  evalScore();
+}
+
+function evalScore() {
   if (playerScore > computerScore) {
     console.log("Congratulations! You won!  You defeated the evil AI!");
     alert("Congratulations! You won!  You defeated the evil AI!");
