@@ -36,7 +36,7 @@ function game() {
                 return; // Exit the game if the user cancels the prompt
             }
 
-            playerSelection = playerSelection.toLowerCase().trim();
+            playerSelection = playerSelection.trim().toLowerCase();
 
             if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
                 break;
