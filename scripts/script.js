@@ -1,7 +1,7 @@
-const choices = ["rock", "paper", "scissors"];
+const options = ["rock", "paper", "scissors"];
 function computerPlay() {
-  const randomIndex = Math.floor(Math.random() * choices.length);
-  return choices[randomIndex];
+  const computerOption = Math.floor(Math.random() * options.length);
+  return options[computerOption];
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -38,7 +38,7 @@ function game(title) {
       }
       playerSelection = playerSelection.trim().toLowerCase();
 
-      if (choices.includes(playerSelection)) {
+      if (options.includes(playerSelection)) {
         message = "";
         break;
       } else {
