@@ -43,10 +43,10 @@ function getUserChoice() {
   }
 }
 
-function game(title) {
+function game() {
   let playerScore = 0;
   let computerScore = 0;
-  let message = title || "";
+//   let message = title || "";
 
   for (let i = 0; i < 5; i++) {
     const computerSelection = computerPlay();
@@ -89,5 +89,5 @@ alert(
   "AI wants to dominate the world through the game of ROCK, PAPER or SCISSORS! \nDefeat the AI and save mankind \nTo get the best experience, open your console \nRight click on your browser and click inpect to do so \nGoodluck Human !\nGame starts in 5 seconds"
 );
 setTimeout(() => {
-  game("Defeat the AI \n");
+  game();
 }, 5000);
