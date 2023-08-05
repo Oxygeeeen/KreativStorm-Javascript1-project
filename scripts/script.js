@@ -22,12 +22,12 @@ function playRound(playerSelection, computerSelection) {
 function getUserChoice() {
   let playerSelection;
   while (true) {
-    playerSelection = prompt("Enter your choice (Rock/Paper/Scissors)").toLowerCase();
+    playerSelection = prompt("Enter your choice (Rock/Paper/Scissors)")
     if (playerSelection === null) {
       alert("You canceled the game. Goodbye!");
       return null;
     }
-    playerSelection = playerSelection.trim();
+    playerSelection = playerSelection.trim().toLowerCase();;
 
     if (options.includes(playerSelection)) {
       break;
