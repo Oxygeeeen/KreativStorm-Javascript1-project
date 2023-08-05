@@ -29,14 +29,14 @@ function game() {
         let playerSelection;
 
         while (true) {
-            playerSelection = prompt("Round " + (i + 1) + ": Enter your choice (Rock/Paper/Scissors)");
+            playerSelection = prompt("Round " + (i + 1) + ": Enter your choice (Rock/Paper/Scissors)")
 
             if (playerSelection === null) {
                 alert("You canceled the game. Goodbye!");
                 return; // Exit the game if the user cancels the prompt
             }
 
-            playerSelection = playerSelection.trim();
+            playerSelection = playerSelection.toLowerCase().trim();
 
             if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
                 break;
